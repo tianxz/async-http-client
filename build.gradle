@@ -1,0 +1,48 @@
+apply plugin: 'idea'
+
+allprojects {
+    apply plugin: 'maven'
+
+    group = 'org.asynchttpclient'
+    version = '2.0.16-SNAPSHOT'
+}
+
+subprojects {
+    apply plugin: 'java'
+
+    repositories {
+        mavenLocal()
+
+        maven { url "https://maven.java.net/content/repositories/releases" }
+        maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
+        maven { url "http://repo.maven.apache.org/maven2" }
+    }
+
+    dependencies {
+        compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.21'
+
+        compile group: 'org.apache.directory.server', name: 'apacheds-protocol-dns', version: '2.0.0-M23'
+        testCompile group: 'org.apache.directory.server', name: 'apacheds-server-jndi', version: '2.0.0-M23'
+        testCompile group: 'org.apache.directory.server', name: 'apacheds-i18n', version: '2.0.0-M23'
+        testCompile group: 'org.apache.directory.junit', name: 'junit-addons', version: '0.1'
+        testCompile group: 'org.apache.mina', name: 'mina-core', version: '2.0.14'
+        testCompile group: 'org.hamcrest', name: 'hamcrest-all', version: '1.3'
+        testCompile group: 'junit', name: 'junit', version: '4.11'
+        testCompile group: 'ch.qos.logback', name: 'logback-classic', version: '1.1.7'
+        testCompile(group: 'org.testng', name: 'testng', version: '6.9.10') { exclude(module: 'bsh') }
+        testCompile group: 'org.eclipse.jetty', name: 'jetty-servlet', version: '9.3.11.v20160721'
+        testCompile group: 'org.eclipse.jetty', name: 'jetty-servlets', version: '9.3.11.v20160721'
+        testCompile group: 'org.eclipse.jetty', name: 'jetty-security', version: '9.3.11.v20160721'
+        testCompile group: 'org.eclipse.jetty', name: 'jetty-proxy', version: '9.3.11.v20160721'
+        testCompile group: 'org.eclipse.jetty.websocket', name: 'websocket-server', version: '9.3.11.v20160721'
+        testCompile group: 'org.eclipse.jetty.websocket', name: 'websocket-servlet', version: '9.3.11.v20160721'
+        testCompile group: 'org.apache.tomcat', name: 'coyote', version: '6.0.45'
+        testCompile(group: 'org.apache.tomcat', name: 'catalina', version: '6.0.45') { exclude(module: 'servlet-api') }
+        testCompile group: 'commons-io', name: 'commons-io', version: '2.4'
+        testCompile group: 'commons-fileupload', name: 'commons-fileupload', version: '1.3'
+        testCompile group: 'com.e-movimento.tinytools', name: 'privilegedaccessor', version: '1.2.2'
+        testCompile group: 'io.reactivex', name: 'rxjava-reactive-streams', version: '1.1.1'
+        testCompile group: 'org.powermock', name: 'powermock-module-testng', version: '1.6.4'
+        testCompile group: 'org.powermock', name: 'powermock-api-mockito', version: '1.6.4'
+    }
+}

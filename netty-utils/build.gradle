@@ -1,0 +1,5 @@
+
+description = 'Asynchronous Http Client Netty Utils'
+dependencies {
+    compile group: 'io.netty', name: 'netty-buffer', version:'4.0.41.Final'
+}

@@ -1,0 +1,7 @@
+
+description = 'Asynchronous Http Client JDeferred Extras'
+dependencies {
+    compile group: 'org.jdeferred', name: 'jdeferred-core', version:'1.2.4'
+
+    compile project(':async-http-client')
+}

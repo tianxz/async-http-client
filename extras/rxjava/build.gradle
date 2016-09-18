@@ -1,0 +1,6 @@
+
+description = 'Asynchronous Http Client RxJava Extras'
+dependencies {
+    compile group: 'io.reactivex', name: 'rxjava', version:'1.0.14'
+    compile project(':async-http-client')
+}

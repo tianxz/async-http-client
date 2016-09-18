@@ -18,3 +18,8 @@ test-output
 MANIFEST.MF
 work
 atlassian-ide-plugin.xml
+
+build
+.gradle
+gradle/
+gradlew.bat

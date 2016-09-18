@@ -1,0 +1,7 @@
+
+description = 'Netty/Resolver/DNS'
+dependencies {
+  compile project(':netty-bp:netty-resolver')
+  compile project(':netty-bp:netty-codec-dns')
+    compile group: 'io.netty', name: 'netty-transport', version:'4.0.41.Final'
+}

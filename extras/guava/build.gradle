@@ -1,0 +1,7 @@
+
+description = 'Asynchronous Http Client Guava Extras'
+dependencies {
+    compile group: 'com.google.guava', name: 'guava', version:'14.0.1'
+
+    compile project(':async-http-client')
+}

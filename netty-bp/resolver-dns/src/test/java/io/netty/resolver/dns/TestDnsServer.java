@@ -115,7 +115,6 @@ final class TestDnsServer extends DnsServer {
         private final DnsMessageEncoder encoder = new DnsMessageEncoder();
         private final TestAAAARecordEncoder recordEncoder = new TestAAAARecordEncoder();
 
-        @Override
         public ProtocolEncoder getEncoder(IoSession session) throws Exception {
             return new DnsUdpEncoder() {
 
@@ -145,7 +144,6 @@ final class TestDnsServer extends DnsServer {
             };
         }
 
-        @Override
         public ProtocolDecoder getDecoder(IoSession session) throws Exception {
             return new DnsUdpDecoder();
         }
@@ -191,7 +189,6 @@ final class TestDnsServer extends DnsServer {
             return domainMap.get(domain);
         }
 
-        @Override
         public Set<ResourceRecord> getRecords(QuestionRecord questionRecord) throws DnsException {
             String name = questionRecord.getDomainName();
             List<String> addresses = domainMap.get(name);
@@ -258,7 +255,6 @@ final class TestDnsServer extends DnsServer {
             this.domains = domains;
         }
 
-        @Override
         public Set<ResourceRecord> getRecords(QuestionRecord questionRecord) {
             String name = questionRecord.getDomainName();
             if (domains.contains(name)) {

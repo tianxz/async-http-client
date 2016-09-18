@@ -1,0 +1,5 @@
+
+description = 'Asynchronous Http Simple Client'
+dependencies {
+    compile project(':async-http-client')
+}

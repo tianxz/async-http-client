@@ -17,11 +17,12 @@ import java.util.concurrent.TimeUnit;
  * A {@link org.asynchttpclient.filter.RequestFilter} that extends the capability of
  * {@link ThrottleRequestFilter} by allowing rate limiting per second in addition to the
  * number of concurrent connections.
- * 
- *  The <code>maxWaitMs</code> argument is respected accross both permit acquistions. For 
- *  example, if 1000 ms is given, and the filter spends 500 ms waiting for a connection,
- *  it will only spend another 500 ms waiting for the rate limiter.
+ * <p>
+ * The <code>maxWaitMs</code> argument is respected accross both permit acquistions. For
+ * example, if 1000 ms is given, and the filter spends 500 ms waiting for a connection,
+ * it will only spend another 500 ms waiting for the rate limiter.
  */
+@SuppressWarnings("unchecked")
 public class RateLimitedThrottleRequestFilter implements RequestFilter {
     private final static Logger logger = LoggerFactory.getLogger(RateLimitedThrottleRequestFilter.class);
     private final Semaphore available;
@@ -41,7 +42,6 @@ public class RateLimitedThrottleRequestFilter implements RequestFilter {
     /**
      * {@inheritDoc}
      */
-    @Override
     public <T> FilterContext<T> filter(FilterContext<T> ctx) throws FilterException {
         try {
             if (logger.isDebugEnabled()) {
@@ -56,7 +56,7 @@ public class RateLimitedThrottleRequestFilter implements RequestFilter {
             throw new FilterException(String.format("Interrupted Request %s with AsyncHandler %s", ctx.getRequest(), ctx.getAsyncHandler()));
         }
 
-        return new FilterContext.FilterContextBuilder<>(ctx).asyncHandler(new AsyncHandlerWrapper<>(ctx.getAsyncHandler(), available))
+        return new FilterContext.FilterContextBuilder(ctx).asyncHandler(new AsyncHandlerWrapper(ctx.getAsyncHandler(), available))
                 .build();
     }
 

@@ -1,0 +1,5 @@
+
+description = 'Asynchronous Http Client Registry Extras'
+dependencies {
+    compile project(':async-http-client')
+}

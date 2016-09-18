@@ -1,0 +1,7 @@
+
+description = 'Netty/Resolver'
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+
+    compile group: 'io.netty', name: 'netty-common', version:'4.0.41.Final'
+}

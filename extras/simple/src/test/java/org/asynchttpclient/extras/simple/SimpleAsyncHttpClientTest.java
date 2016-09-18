@@ -14,6 +14,7 @@ package org.asynchttpclient.extras.simple;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
 import static org.testng.Assert.*;
+
 import io.netty.handler.codec.http.HttpHeaders;
 
 import java.io.ByteArrayInputStream;
@@ -31,6 +32,7 @@ import org.asynchttpclient.request.body.generator.FileBodyGenerator;
 import org.asynchttpclient.request.body.generator.InputStreamBodyGenerator;
 import org.asynchttpclient.request.body.multipart.ByteArrayPart;
 import org.asynchttpclient.uri.Uri;
+import org.omg.CORBA.Object;
 import org.testng.annotations.Test;
 
 public class SimpleAsyncHttpClientTest extends AbstractBasicTest {
@@ -129,8 +131,8 @@ public class SimpleAsyncHttpClientTest extends AbstractBasicTest {
 
     @Test(groups = "standalone")
     public void testDerive() throws Exception {
-        try(SimpleAsyncHttpClient client = new SimpleAsyncHttpClient.Builder().build()) {
-            try(SimpleAsyncHttpClient derived = client.derive().build()) {
+        try (SimpleAsyncHttpClient client = new SimpleAsyncHttpClient.Builder().build()) {
+            try (SimpleAsyncHttpClient derived = client.derive().build()) {
                 assertNotSame(derived, client);
             }
         }
@@ -157,7 +159,9 @@ public class SimpleAsyncHttpClientTest extends AbstractBasicTest {
     @Test(groups = "standalone")
     public void testSimpleTransferListener() throws Exception {
 
-        final List<Error> errors = Collections.synchronizedList(new ArrayList<>());
+        final List<java.lang.Object> objects = Collections.synchronizedList(new ArrayList<>());
+        final List<Error> errors = new ArrayList<>();
+        objects.forEach(s -> errors.add((Error) s));
 
         SimpleAHCTransferListener listener = new SimpleAHCTransferListener() {
 
@@ -266,7 +270,7 @@ public class SimpleAsyncHttpClientTest extends AbstractBasicTest {
         SimpleAsyncHttpClient client = new SimpleAsyncHttpClient.Builder().setUrl(getTargetUrl()).build();
         try (SimpleAsyncHttpClient derived = client.derive().build()) {
             client.close();
-            
+
             try {
                 derived.get().get();
                 fail("Expected closed AHC");

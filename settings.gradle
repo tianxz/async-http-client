@@ -1,0 +1,27 @@
+rootProject.name = 'async-http-client-project'
+
+include ':netty-bp:netty-codec-dns'
+include ':netty-bp:netty-resolver'
+include ':netty-bp:netty-resolver-dns'
+include ':netty-bp'
+include ':async-http-client-netty-utils'
+include ':async-http-client'
+include ':async-http-client-extras-parent:async-http-client-extras-guava'
+include ':async-http-client-extras-parent:async-http-client-extras-jdeferred'
+include ':async-http-client-extras-parent:async-http-client-extras-registry'
+include ':async-http-client-extras-parent:async-http-client-extras-rxjava'
+include ':async-http-client-extras-parent:async-http-client-extras-simple'
+include ':async-http-client-extras-parent'
+
+project(':netty-bp:netty-codec-dns').projectDir = "$rootDir/netty-bp/codec-dns" as File
+project(':netty-bp:netty-resolver').projectDir = "$rootDir/netty-bp/resolver" as File
+project(':netty-bp:netty-resolver-dns').projectDir = "$rootDir/netty-bp/resolver-dns" as File
+project(':netty-bp').projectDir = "$rootDir/netty-bp" as File
+project(':async-http-client-netty-utils').projectDir = "$rootDir/netty-utils" as File
+project(':async-http-client').projectDir = "$rootDir/client" as File
+project(':async-http-client-extras-parent:async-http-client-extras-guava').projectDir = "$rootDir/extras/guava" as File
+project(':async-http-client-extras-parent:async-http-client-extras-jdeferred').projectDir = "$rootDir/extras/jdeferred" as File
+project(':async-http-client-extras-parent:async-http-client-extras-registry').projectDir = "$rootDir/extras/registry" as File
+project(':async-http-client-extras-parent:async-http-client-extras-rxjava').projectDir = "$rootDir/extras/rxjava" as File
+project(':async-http-client-extras-parent:async-http-client-extras-simple').projectDir = "$rootDir/extras/simple" as File
+project(':async-http-client-extras-parent').projectDir = "$rootDir/extras" as File

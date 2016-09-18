@@ -29,10 +29,11 @@ public class AsyncHandlerWrapper<T> implements AsyncHandler<T> {
             LOGGER.debug("Current Throttling Status after onThrowable {}", available.availablePermits());
     }
 
+
+
     /**
      * {@inheritDoc}
      */
-    @Override
     public void onThrowable(Throwable t) {
         try {
             asyncHandler.onThrowable(t);
@@ -44,7 +45,6 @@ public class AsyncHandlerWrapper<T> implements AsyncHandler<T> {
     /**
      * {@inheritDoc}
      */
-    @Override
     public State onBodyPartReceived(HttpResponseBodyPart bodyPart) throws Exception {
         return asyncHandler.onBodyPartReceived(bodyPart);
     }
@@ -52,7 +52,6 @@ public class AsyncHandlerWrapper<T> implements AsyncHandler<T> {
     /**
      * {@inheritDoc}
      */
-    @Override
     public State onStatusReceived(HttpResponseStatus responseStatus) throws Exception {
         return asyncHandler.onStatusReceived(responseStatus);
     }
@@ -60,7 +59,6 @@ public class AsyncHandlerWrapper<T> implements AsyncHandler<T> {
     /**
      * {@inheritDoc}
      */
-    @Override
     public State onHeadersReceived(HttpResponseHeaders headers) throws Exception {
         return asyncHandler.onHeadersReceived(headers);
     }
@@ -68,7 +66,6 @@ public class AsyncHandlerWrapper<T> implements AsyncHandler<T> {
     /**
      * {@inheritDoc}
      */
-    @Override
     public T onCompleted() throws Exception {
         try {
             return asyncHandler.onCompleted();
